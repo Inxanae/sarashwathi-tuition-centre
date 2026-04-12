@@ -353,7 +353,7 @@ body {
 }
 .ach-total {
   font-size: 2rem; font-weight: 700; color: var(--gold);
-  font-family: 'Playfair Display SC', serif;
+  font-family: 'Lato', sans-serif;
   margin-bottom: 20px;
 }
 .ach-subs { display: flex; flex-direction: column; gap: 8px; }
@@ -661,7 +661,12 @@ footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a class="nav-enroll" href="https://wa.me/919080894665?text=Hello%2C%20I%20am%20interested%20in%20admission%20at%20Saraswathi%20Tuition%20Centre%2C%20Dindigul%20for%20Academic%20Year%202026-27." target="_blank">Enroll Now</a>
+  <div style="display:flex;align-items:center;gap:10px">
+    <a class="nav-enroll" href="https://wa.me/919080894665?text=Hello%2C%20I%20am%20interested%20in%20admission%20at%20Saraswathi%20Tuition%20Centre%2C%20Dindigul%20for%20Academic%20Year%202026-27." target="_blank">Enroll Now</a>
+    <button id="ownerBtn" title="" onclick="document.getElementById('loginPanel').classList.add('active');document.getElementById('uploadPanel').classList.remove('active');document.getElementById('ownerPwd').value='';document.getElementById('loginErr').style.display='none';document.getElementById('ownerModal').classList.add('open')" style="background:none;border:none;padding:6px;opacity:0.18;transition:opacity 0.2s;display:flex;align-items:center;justify-content:center;" onmouseenter="this.style.opacity='0.7'" onmouseleave="this.style.opacity='0.18'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--brown)" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+    </button>
+  </div>
 </nav>
 
 
