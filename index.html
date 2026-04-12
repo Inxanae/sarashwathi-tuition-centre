@@ -51,7 +51,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet"/>
 
 <style>
 /* ═══════════════════════════════════════════
@@ -84,19 +84,7 @@ body {
   cursor: default;
 }
 
-/* ── CUSTOM CURSOR ── */
-* { cursor: none !important; }
-#cursor {
-  width: 10px; height: 10px;
-  background: var(--gold);
-  border-radius: 50%;
-  position: fixed; top: 0; left: 0;
-  pointer-events: none; z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: transform 0.1s, width 0.2s, height 0.2s;
-  mix-blend-mode: multiply;
-}
-#cursor.hover { width: 28px; height: 28px; background: var(--gold-light); opacity: 0.6; }
+
 
 /* ── ORNAMENT DIVIDER ── */
 .ornament {
@@ -223,7 +211,7 @@ body {
 }
 .stat { text-align: center; }
 .stat-num {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display SC', serif;
   font-size: 2.4rem; font-weight: 700; color: var(--gold);
   line-height: 1;
 }
@@ -365,7 +353,7 @@ body {
 }
 .ach-total {
   font-size: 2rem; font-weight: 700; color: var(--gold);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display SC', serif;
   margin-bottom: 20px;
 }
 .ach-subs { display: flex; flex-direction: column; gap: 8px; }
@@ -562,20 +550,7 @@ footer {
 footer p { font-size: 0.72rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; }
 footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
 
-/* ══════════════════════════════
-   OWNER BUTTON (top-right, subtle)
-══════════════════════════════ */
-#ownerBtn {
-  position: fixed; top: 20px; right: 20px; z-index: 999;
-  width: 36px; height: 36px;
-  background: rgba(44,24,16,0.08);
-  border: 1px solid rgba(184,150,12,0.2);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0.35; transition: opacity 0.3s;
-  backdrop-filter: blur(4px);
-}
-#ownerBtn:hover { opacity: 1; }
-#ownerBtn svg { width: 14px; height: 14px; fill: var(--gold); }
+
 
 /* ── OWNER MODAL ── */
 .modal-overlay {
@@ -674,8 +649,7 @@ footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
 </head>
 <body>
 
-<!-- Custom cursor -->
-<div id="cursor"></div>
+<!-- Owner button hidden - double-click footer copyright to access -->
 
 <!-- ── NAVBAR ── -->
 <nav class="navbar" id="navbar">
@@ -690,10 +664,7 @@ footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
   <a class="nav-enroll" href="https://wa.me/919080894665?text=Hello%2C%20I%20am%20interested%20in%20admission%20at%20Saraswathi%20Tuition%20Centre%2C%20Dindigul%20for%20Academic%20Year%202026-27." target="_blank">Enroll Now</a>
 </nav>
 
-<!-- ── OWNER BUTTON (subtle, top-right) ── -->
-<button id="ownerBtn" title="Owner access" onclick="document.getElementById('ownerModal').classList.add('open')">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-</button>
+
 
 <!-- ══════════════════════════════
      HERO
@@ -1010,7 +981,7 @@ footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
   <div class="footer-en" style="font-style:italic;font-size:0.9rem;color:rgba(255,255,255,0.4);margin-bottom:24px">K.Ayyapatty, Vembarpatty Via, Dindigul – 624308</div>
   <p>Empowering Minds · Achieving Excellence · Est. 2015</p>
   <p style="margin-top:6px">Dindigul, Tamil Nadu &nbsp;·&nbsp; <a href="mailto:kboomipal@gmail.com">kboomipal@gmail.com</a> &nbsp;·&nbsp; <a href="tel:9080894665">9080894665</a></p>
-  <p style="margin-top:20px;font-size:0.62rem;opacity:0.4">© 2026 Saraswathi Tuition Centre. All rights reserved.</p>
+  <p style="margin-top:20px;font-size:0.62rem;opacity:0.4" id="ownerTrigger">© 2026 Saraswathi Tuition Centre. All rights reserved.</p>
 </footer>
 
 <!-- ══════════════════════════════
@@ -1052,15 +1023,20 @@ footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
 // ── OWNER PASSWORD (change this to your own password) ──
 const OWNER_PASSWORD = 'saraswathi2015';
 
-// ── CURSOR ──
-const cur = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-  cur.style.left = e.clientX + 'px';
-  cur.style.top = e.clientY + 'px';
-});
-document.querySelectorAll('a,button,.chip,.cat-item,.ach-tab,.pillar').forEach(el => {
-  el.addEventListener('mouseenter', () => cur.classList.add('hover'));
-  el.addEventListener('mouseleave', () => cur.classList.remove('hover'));
+// ── HIDDEN OWNER TRIGGER (double-click footer copyright) ──
+let clickCount = 0, clickTimer;
+document.getElementById('ownerTrigger').addEventListener('click', () => {
+  clickCount++;
+  clearTimeout(clickTimer);
+  clickTimer = setTimeout(() => { clickCount = 0; }, 600);
+  if (clickCount >= 3) {
+    clickCount = 0;
+    document.getElementById('loginPanel').classList.add('active');
+    document.getElementById('uploadPanel').classList.remove('active');
+    document.getElementById('ownerPwd').value = '';
+    document.getElementById('loginErr').style.display = 'none';
+    document.getElementById('ownerModal').classList.add('open');
+  }
 });
 
 // ── NAVBAR SCROLL ──
