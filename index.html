@@ -596,7 +596,33 @@ footer a{color:rgba(255,255,255,0.36);text-decoration:none;}
           <div class="of"><label>Rank / Badge *</label><input type="text" id="r12-badge" placeholder="e.g. 🥇 School First"/></div>
           <div class="of"><label>Year *</label><input type="text" id="r12-year" placeholder="e.g. 2024-25"/></div>
         </div>
-        <div class="of"><label>Subjects &amp; Scores (JSON)</label><textarea id="r12-subjects" rows="3" placeholder='[{"name":"Mathematics","score":100},{"name":"Physics","score":96}]'></textarea></div>
+        <div class="of">
+          <label>Subjects &amp; Scores</label>
+          <div style="border:1px solid rgba(184,150,12,0.2);overflow:hidden;">
+            <div style="display:grid;grid-template-columns:1fr 100px;background:rgba(184,150,12,0.08);border-bottom:1px solid rgba(184,150,12,0.15);">
+              <div style="padding:6px 12px;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown-soft);">Subject</div>
+              <div style="padding:6px 12px;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown-soft);border-left:1px solid rgba(184,150,12,0.15);">Score</div>
+            </div>
+            <div id="r12-subj-rows">
+              <div style="display:grid;grid-template-columns:1fr 100px;border-bottom:1px solid rgba(184,150,12,0.08);">
+                <input type="text" class="r12-sname" placeholder="e.g. Mathematics" style="border:none;border-right:1px solid rgba(184,150,12,0.15);padding:8px 12px;background:var(--ivory);font-size:0.84rem;outline:none;width:100%;"/>
+                <input type="number" class="r12-sscore" placeholder="100" min="0" max="100" style="border:none;padding:8px 12px;background:var(--ivory);font-size:0.84rem;outline:none;width:100%;text-align:center;"/>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 100px;border-bottom:1px solid rgba(184,150,12,0.08);">
+                <input type="text" class="r12-sname" placeholder="e.g. Physics" style="border:none;border-right:1px solid rgba(184,150,12,0.15);padding:8px 12px;background:var(--white);font-size:0.84rem;outline:none;width:100%;"/>
+                <input type="number" class="r12-sscore" placeholder="100" min="0" max="100" style="border:none;padding:8px 12px;background:var(--white);font-size:0.84rem;outline:none;width:100%;text-align:center;"/>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 100px;border-bottom:1px solid rgba(184,150,12,0.08);">
+                <input type="text" class="r12-sname" placeholder="e.g. Chemistry" style="border:none;border-right:1px solid rgba(184,150,12,0.15);padding:8px 12px;background:var(--ivory);font-size:0.84rem;outline:none;width:100%;"/>
+                <input type="number" class="r12-sscore" placeholder="100" min="0" max="100" style="border:none;padding:8px 12px;background:var(--ivory);font-size:0.84rem;outline:none;width:100%;text-align:center;"/>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 100px;">
+                <input type="text" class="r12-sname" placeholder="e.g. Biology / Computer Sc." style="border:none;border-right:1px solid rgba(184,150,12,0.15);padding:8px 12px;background:var(--white);font-size:0.84rem;outline:none;width:100%;"/>
+                <input type="number" class="r12-sscore" placeholder="100" min="0" max="100" style="border:none;padding:8px 12px;background:var(--white);font-size:0.84rem;outline:none;width:100%;text-align:center;"/>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="of"><label>Photo (optional)</label>
           <div class="upload-zone" style="padding:14px" onclick="document.getElementById('r12-photo-file').click()">
             <p>Click to upload student photo</p>
@@ -620,7 +646,29 @@ footer a{color:rgba(255,255,255,0.36);text-decoration:none;}
           <div class="of"><label>Rank / Badge *</label><input type="text" id="r10-badge" placeholder="e.g. 🥉 School Third"/></div>
           <div class="of"><label>Year *</label><input type="text" id="r10-year" placeholder="e.g. 2024-25"/></div>
         </div>
-        <div class="of"><label>Subjects &amp; Scores (JSON)</label><textarea id="r10-subjects" rows="3" placeholder='[{"name":"Mathematics","score":98},{"name":"Science","score":92}]'></textarea></div>
+        <div class="of">
+          <label>Subjects &amp; Scores</label>
+          <div style="border:1px solid rgba(184,150,12,0.2);overflow:hidden;">
+            <div style="display:grid;grid-template-columns:1fr 100px;background:rgba(184,150,12,0.08);border-bottom:1px solid rgba(184,150,12,0.15);">
+              <div style="padding:6px 12px;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown-soft);">Subject</div>
+              <div style="padding:6px 12px;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown-soft);border-left:1px solid rgba(184,150,12,0.15);">Score</div>
+            </div>
+            <div id="r10-subj-rows">
+              <div style="display:grid;grid-template-columns:1fr 100px;border-bottom:1px solid rgba(184,150,12,0.08);">
+                <input type="text" class="r10-sname" placeholder="e.g. Mathematics" style="border:none;border-right:1px solid rgba(184,150,12,0.15);padding:8px 12px;background:var(--ivory);font-size:0.84rem;outline:none;width:100%;"/>
+                <input type="number" class="r10-sscore" placeholder="100" min="0" max="100" style="border:none;padding:8px 12px;background:var(--ivory);font-size:0.84rem;outline:none;width:100%;text-align:center;"/>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 100px;border-bottom:1px solid rgba(184,150,12,0.08);">
+                <input type="text" class="r10-sname" placeholder="e.g. Science" style="border:none;border-right:1px solid rgba(184,150,12,0.15);padding:8px 12px;background:var(--white);font-size:0.84rem;outline:none;width:100%;"/>
+                <input type="number" class="r10-sscore" placeholder="100" min="0" max="100" style="border:none;padding:8px 12px;background:var(--white);font-size:0.84rem;outline:none;width:100%;text-align:center;"/>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 100px;">
+                <input type="text" class="r10-sname" placeholder="e.g. Social Science" style="border:none;border-right:1px solid rgba(184,150,12,0.15);padding:8px 12px;background:var(--ivory);font-size:0.84rem;outline:none;width:100%;"/>
+                <input type="number" class="r10-sscore" placeholder="100" min="0" max="100" style="border:none;padding:8px 12px;background:var(--ivory);font-size:0.84rem;outline:none;width:100%;text-align:center;"/>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="of"><label>Photo (optional)</label>
           <div class="upload-zone" style="padding:14px" onclick="document.getElementById('r10-photo-file').click()">
             <p>Click to upload student photo</p>
@@ -914,13 +962,16 @@ async function addResult(cls) {
   const total = document.getElementById(`${p}-total`).value.trim();
   const badge = document.getElementById(`${p}-badge`).value.trim();
   const year = document.getElementById(`${p}-year`).value.trim();
-  const subsTxt = document.getElementById(`${p}-subjects`).value.trim();
+  // Read subjects from grid rows
+  const sNames = [...document.querySelectorAll(`.${p}-sname`)].map(i=>i.value.trim());
+  const sScores = [...document.querySelectorAll(`.${p}-sscore`)].map(i=>parseInt(i.value)||0);
+  const subsTxt = JSON.stringify(sNames.map((n,i)=>({name:n,score:sScores[i]})).filter(s=>s.name));
   const photoFile = document.getElementById(`${p}-photo-file`).files[0];
   const statusId = `${p}-status`;
 
   if(!name||!total||!badge||!year) { showStatus(statusId,'⚠️ Fill all required fields.',false); return; }
   let subjects = [];
-  try { subjects = subsTxt ? JSON.parse(subsTxt) : []; } catch(e) { showStatus(statusId,'⚠️ Invalid JSON in subjects.',false); return; }
+  try { subjects = subsTxt ? JSON.parse(subsTxt) : []; } catch(e) { subjects = []; }
   let photo_url = '';
   if(photoFile) photo_url = await fileToBase64(photoFile);
 
@@ -930,10 +981,8 @@ async function addResult(cls) {
   const {error} = await sb.from(tbl).insert({name,total,badge,year,subjects:JSON.stringify(subjects),photo_url});
   if(error) { showStatus(statusId,'❌ Error: '+error.message,false); return; }
   showStatus(statusId,'✅ Result added!',true);
-  [name,total,badge,year,subsTxt].forEach((_,i)=>{
-    const ids=[`${p}-name`,`${p}-total`,`${p}-badge`,`${p}-year`,`${p}-subjects`];
-    document.getElementById(ids[i]).value='';
-  });
+  [`${p}-name`,`${p}-total`,`${p}-badge`,`${p}-year`].forEach(id=>document.getElementById(id).value='');
+  document.querySelectorAll(`.${p}-sname, .${p}-sscore`).forEach(i=>i.value='');
   document.getElementById(`${p}-photo-preview`).style.display='none';
   loadResults(cls);
   const loader = cls==='12th'?loadR12Existing:loadR10Existing;
