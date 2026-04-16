@@ -1549,13 +1549,49 @@ async function submitReview() {
 }
 
 async function loadReviews() {
-  const container = document.getElementById('reviews-container');
-  const summary = document.getElementById('rating-summary');
-  if(!sbOk()) { container.innerHTML='<div class="reviews-loading">Connect Supabase to see reviews.</div>'; return; }
-  const {data,error} = await sb.from('reviews').select('*').order('created_at',{ascending:false});
-  if(error||!data) { container.innerHTML='<div class="reviews-loading">Could not load reviews.</div>'; return; }
-  if(!data.length) { container.innerHTML='<div class="reviews-loading" style="color:rgba(255,255,255,0.3)">No reviews yet. Be the first!</div>'; summary.style.display='none'; return; }
+  const container = document.getElementById('reviews-grid');
 
+  if (!container) {
+    console.error("reviews-grid not found ❌");
+    return;
+  }
+
+  if(!sbOk()) {
+    container.innerHTML = '<div class="reviews-loading">Connect Supabase to see reviews.</div>';
+    return;
+  }
+
+  const { data, error } = await sb
+    .from('reviews')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error || !data) {
+    container.innerHTML = '<div class="reviews-loading">Could not load reviews.</div>';
+    return;
+  }
+
+  if (!data.length) {
+    container.innerHTML = '<div class="reviews-loading">No reviews yet. Be the first!</div>';
+    return;
+  }
+
+  container.innerHTML = "";
+
+  data.forEach(item => {
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+      <div style="border:1px solid #ddd;padding:15px;margin-bottom:10px">
+        <strong>${item.name || "Anonymous"}</strong>
+        <div>${"⭐".repeat(item.rating)}</div>
+        <p>${item.message || ""}</p>
+      </div>
+    `;
+
+    container.appendChild(div);
+  });
+}
   // Summary
   const avg = (data.reduce((s,r)=>s+(r.stars||3),0)/data.length).toFixed(1);
   const counts = {very_good:0,good:0,moderate:0,bad:0};
